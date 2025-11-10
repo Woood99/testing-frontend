@@ -3,7 +3,7 @@ import UserEvent from '@testing-library/user-event';
 import App from './App';
 
 describe('test app', () => {
-   test('renders learn react link', async () => {
+   test('renders', async () => {
       render(<App />);
       // const helloWorldElem = screen.queryByText(/hello!/i);
       // expect(helloWorldElem).toBeInTheDocument();

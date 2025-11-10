@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import Users from './users/Users';
 
 function App() {
    const [data, setData] = useState(null);
@@ -16,6 +17,7 @@ function App() {
 
    return (
       <div>
+         <Users />
          <h1>Hello!</h1>
          {!value && (
             <button data-testid="toggle-btn" onClick={onClick}>
