@@ -63,6 +63,6 @@ describe('getData', () => {
       const data = await getData();
 
       expect(axios.get).toHaveBeenCalledTimes(1);
-      expect(data).toEqual(['1', '2']);
+      expect(data).toEqual([1, 2]);
    });
 });
