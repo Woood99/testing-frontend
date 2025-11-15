@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react';
-import Users from './Users';
+import { screen } from '@testing-library/react';
 import axios from 'axios';
+import userEvent from '@testing-library/user-event';
+import { renderWithRouter } from '../tests/helpers/renderWithRouter';
 
 jest.mock('axios');
 
@@ -29,12 +30,26 @@ describe('test app', () => {
       };
    });
 
+   afterEach(() => {
+      jest.clearAllMocks();
+   });
+
    test('renders', async () => {
       axios.get.mockResolvedValue(response);
-      render(<Users />);
+      renderWithRouter(null, '/users');
+
       const users = await screen.findAllByTestId('user-item');
       expect(users.length).toBe(3);
       expect(axios.get).toHaveBeenCalledTimes(1);
       screen.debug();
+   });
+
+   test('test redirect to user page', async () => {
+      axios.get.mockResolvedValue(response);
+      renderWithRouter(null, '/users');
+      const users = await screen.findAllByTestId('user-item');
+      expect(users.length).toBe(3);
+      userEvent.click(users[0]);
+      expect(screen.getByTestId('user-page')).toBeInTheDocument();
    });
 });

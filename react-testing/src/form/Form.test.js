@@ -1,10 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
-import App from './App';
+import Form from './Form';
 
-describe('test app', () => {
+describe('test form', () => {
    test('renders', async () => {
-      render(<App />);
+      render(<Form />);
       // const helloWorldElem = screen.queryByText(/hello!/i);
       // expect(helloWorldElem).toBeInTheDocument();
 
@@ -13,7 +13,7 @@ describe('test app', () => {
    });
 
    test('click event', () => {
-      render(<App />);
+      render(<Form />);
 
       const btn = screen.getByTestId('toggle-btn');
       expect(screen.queryByTestId('toggle-elem')).toBeNull();
@@ -24,7 +24,7 @@ describe('test app', () => {
    });
 
    test('input event', () => {
-      render(<App />);
+      render(<Form />);
 
       const input = screen.getByTestId('input-elem');
 
@@ -36,7 +36,7 @@ describe('test app', () => {
    });
 
    test('input event2', () => {
-      render(<App />);
+      render(<Form />);
 
       const input = screen.getByPlaceholderText(/input value.../i);
       expect(screen.queryByTestId('value-elem')).toHaveTextContent('');
@@ -45,7 +45,7 @@ describe('test app', () => {
    });
 
    test('input event3', () => {
-      render(<App />);
+      render(<Form />);
 
       const input = screen.getByPlaceholderText(/input value.../i);
       expect(screen.queryByTestId('value-elem')).toHaveTextContent('');
