@@ -1,16 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import App from './App';
-import { MemoryRouter } from 'react-router-dom';
+import { renderWithRouter } from './tests/helpers/renderWithRouter';
 
 describe('router', () => {
    test('router test', () => {
-      render(
-         <MemoryRouter>
-            <App />
-         </MemoryRouter>
-      );
+      renderWithRouter();
       const homeLink = screen.getByTestId('home-page-link');
       const usersLink = screen.getByTestId('users-page-link');
       userEvent.click(usersLink);
@@ -20,11 +15,7 @@ describe('router', () => {
    });
 
    test('error page test', () => {
-      render(
-         <MemoryRouter initialEntries={['/fasfasfas241421412']}>
-            <App />
-         </MemoryRouter>
-      );
+      renderWithRouter('/fasfasfas241421412');
       expect(screen.getByTestId('not-found-page')).toBeInTheDocument();
    });
 });

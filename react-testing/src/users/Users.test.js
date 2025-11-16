@@ -36,7 +36,7 @@ describe('test app', () => {
 
    test('renders', async () => {
       axios.get.mockResolvedValue(response);
-      renderWithRouter(null, '/users');
+      renderWithRouter('/users');
 
       const users = await screen.findAllByTestId('user-item');
       expect(users.length).toBe(3);
@@ -46,7 +46,7 @@ describe('test app', () => {
 
    test('test redirect to user page', async () => {
       axios.get.mockResolvedValue(response);
-      renderWithRouter(null, '/users');
+      renderWithRouter('/users');
       const users = await screen.findAllByTestId('user-item');
       expect(users.length).toBe(3);
       userEvent.click(users[0]);
